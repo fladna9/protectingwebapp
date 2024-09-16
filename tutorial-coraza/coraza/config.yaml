@@ -1,0 +1,21 @@
+bind: 0.0.0.0:9000
+
+default_application: haproxy_spoa
+
+applications:
+  haproxy_spoa:
+    directives: |
+      Include /etc/coraza-spoa/coraza.conf
+      Include /etc/coraza-spoa/crs-setup.conf
+      Include /etc/coraza-spoa/coreruleset/rules/*.conf
+
+    no_response_check: true
+
+    # The transaction cache lifetime in milliseconds (60000ms = 60s)
+    transaction_ttl_ms: 60000
+    # The maximum number of transactions which can be cached
+    transaction_active_limit: 100000
+
+    # The log level configuration, one of: debug/info/warn/error/panic/fatal
+    log_level: info
+    log_file: /var/log/coraza.log

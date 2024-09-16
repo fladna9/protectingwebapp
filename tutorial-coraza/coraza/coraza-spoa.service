@@ -1,0 +1,14 @@
+[Unit]
+Description=Coraza WAF SPOA Daemon
+Documentation=https://www.coraza.io
+
+[Service]
+ExecStart=/usr/local/bin/coraza-spoa -config=/etc/coraza-spoa/config.yaml
+WorkingDirectory=/home/spoa/
+Restart=always
+Type=exec
+User=spoa
+Group=spoa
+
+[Install]
+WantedBy=multi-user.target
